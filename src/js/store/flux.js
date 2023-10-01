@@ -21,20 +21,15 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       fetchApi: async (endpoint, fetch_method, data) => {
+        let baseUrl = `https://playground.4geeks.com/apis/fake/contact/`;
         try {
-          let baseUrl = `https://playground.4geeks.com/apis/fake/contact/${endpoint}`;
           const response = await fetch(baseUrl + endpoint, {
             method: fetch_method,
             body: JSON.stringify(data),
           });
           const jsonData = await response.json();
-          // if (!response.ok) {
-          // 	console.log(response.ok, response.status)
-          // 	return { "response_code": response.status, "message": jsonData.message }
-          // } else {
-          // 	return { "response_code": response.status, "jsonData": jsonData, "message": jsonData.message }
+          getStore().contacts = jsonData;
 
-          // }
           return jsonData;
         } catch (error) {
           console.log("apiFetch: ", error);

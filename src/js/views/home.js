@@ -8,12 +8,12 @@ export const Home = () => {
 
   console.log("contacts from store", store.contacts);
 
-  contacts.map((contact) => (
-    <span key={contact.id}>
-      {contact.full_name}
-      {console.log(contact.id, contact.full_name)}
-    </span>
-  ));
+  // contacts.map((contact) => (
+  //   <span key={contact.id}>
+  //     {contact.full_name}
+  //     {console.log(contact.id, contact.full_name)}
+  //   </span>
+  // ));
 
   console.log("contacts", contacts);
   return (
@@ -22,10 +22,17 @@ export const Home = () => {
       <hr />
       <div>
         {contacts.map((contact) => (
-          <span key={contact.id}>
-            {contact.full_name}
-            {console.log("data from home page", contact.id, contact.full_name)}
-          </span>
+          <div key={contact.id}>
+            <a class="icon-link icon-link-hover">
+              {contact.full_name}
+              {console.log(
+                "data from home page",
+                contact.id,
+                contact.full_name
+              )}
+            </a>
+            <hr />
+          </div>
         ))}
       </div>
     </div>
